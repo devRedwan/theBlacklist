@@ -26,13 +26,21 @@ sort by cmplnt_fr_dt
 
 //------------------------------------------------------------------------------------------
 
-// Sticky NavBar
+// Pre-Loader
+const preLoader = () => {
+  document.body.classList += "loading";
+  setTimeout(() => {
+    return document.body.classList.remove("loading");
+  }, 2000);
+};
+preLoader();
 
+// Sticky NavBar
 const navBar = document.querySelector(".navbar");
 window.addEventListener("scroll", function () {
   if (window.scrollY > 250) {
-    navBar.classList.add("sticky-top");
+    navBar.classList.add("sticky-lg-top");
   } else {
-    navBar.classList.remove("sticky-top");
+    navBar.classList.remove("sticky-lg-top");
   }
 });

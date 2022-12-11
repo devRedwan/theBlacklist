@@ -1,3 +1,4 @@
+/* --------------------- Generic --------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;700;900&display=swap");
 
 * {
@@ -16,9 +17,80 @@ body {
   color: #d54857;
 }
 
-/* --------------------- Navbar --------------------- */
+.buttons {
+  position: relative;
+  background-color: #d54857;
+  color: #fff;
+  padding-right: 56px;
+  width: fit-content;
+}
 
-.logo {
+.buttons::after {
+  position: absolute;
+  content: "\f061";
+  background-color: #c63d4c;
+  color: #a0212f;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.buttons:hover {
+  background-color: #e46270;
+}
+
+.buttons:hover:after {
+  background-color: #cc515e;
+}
+
+/* --------------------- Pre-Loader --------------------- */
+.pre-loader {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #24242a;
+  display: none;
+}
+
+.loading .pre-loader {
+  display: flex;
+}
+
+.loading .pre-loader__img {
+  animation: pre-loader__fade-in-out 2000ms ease;
+}
+
+@keyframes pre-loader__fade-in-out {
+  0% {
+    opacity: 1;
+    transform: translateY(5%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* --------------------- Navbar --------------------- */
+.logo__img {
   padding-right: 1rem;
   height: 60px;
 }
@@ -47,8 +119,11 @@ body {
   border-color: #d54857;
 }
 
-.sticky-top {
-  flex-shrink: 1;
+.sticky-lg-top {
+  height: 4rem;
+  background-color: #2e2e35;
+  box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 25%);
+  z-index: 999;
   animation: revealNav 500ms ease;
 }
 
@@ -59,5 +134,76 @@ body {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+.sticky-top .logo__img {
+  height: 40px;
+}
+
+.navbar-toggler {
+  box-shadow: none;
+}
+
+.navbar-toggler:focus {
+  border: 2px solid #d54857;
+  box-shadow: none;
+}
+
+/* --------------------- Landing --------------------- */
+#landing {
+  height: calc(100vh - 70px);
+}
+
+#landing__row {
+  width: 100%;
+}
+
+.text__header--title {
+  font-size: 3.5em;
+  font-weight: 700;
+}
+
+.landing__btn {
+  padding-right: 76px;
+}
+
+.landing__btn::after {
+  width: 3.5rem;
+}
+
+.landing__img {
+  width: 100%;
+}
+
+/* --------------------- Responsive Design --------------------- */
+/* large screen */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* regular screen */
+@media (max-width: 1000px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Tablet screen */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Mobile screen */
+
+@media (max-width: 450px) {
+  html {
+    font-size: 12px;
   }
 }
