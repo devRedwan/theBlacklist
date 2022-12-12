@@ -14,7 +14,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/src/styles.css" />
     <script
       src="https://kit.fontawesome.com/46139afb7e.js"
       crossorigin="anonymous"></script>
@@ -48,8 +48,8 @@
           id="navbarNav">
           <div class="navbar-nav align-items-center fw-bold nav-menu__list">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link mx-5" href="./reports.html">Reports</a>
-            <a class="nav-link" href="./payroll.html">Payroll</a>
+            <a class="nav-link mx-5" href="/src/reports.html">Reports</a>
+            <a class="nav-link" href="/src/payroll.html">Payroll</a>
           </div>
         </div>
       </div>
@@ -62,12 +62,12 @@
         alt="" />
     </section>
 
-    <section
-      class="container pt-sm-5 d-flex justify-content-center"
-      id="landing">
-      <div class="row" id="landing__row">
+    <section class="container d-flex justify-content-center" id="landing">
+      <div
+        class="row flex-nowrap flex-column-reverse flex-lg-row"
+        id="landing__row">
         <div
-          class="landing__text-wrapper align-items-sm-center align-items-lg-start justify-content-center vstack col-lg-6 col gap-5 p-5">
+          class="landing__text-wrapper align-items-sm-center align-items-lg-start justify-content-center vstack col-lg-6 col gap-5 p-xl-5 p-l-2">
           <div class="landing__text--header">
             <p class="landing__text text__header--subTitle mb-0">From the</p>
             <h2 class="landing__text text__header--title fs-1">
@@ -83,18 +83,110 @@
 
           <a
             class="landing__btn buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-3"
-            href="./reports.html">
+            href="/src/reports.html">
             Lookup Incidents
           </a>
         </div>
-        <div class="landing__img--wrapper d-flex col-lg-6 col p-lg-5">
+        <div class="landing__img--wrapper d-flex col-lg-6 col p-xl-5 p-l-2">
           <img
-            class="landing__img"
+            class="landing__img img-responsive"
             src="/assets/illustration_landing.svg"
             alt="Felony Incidents Lookup" />
         </div>
       </div>
     </section>
-    
+
+    <section class="container py-5" id="filter_section">
+      <div class="card border-0 mb-3 bg-transparent">
+        <div class="row g-0 rounded-4 middle_row" id="filter_row">
+          <div
+            class="card__img--wrapper filter__img--wrapper rounded-4 col-md-4 p-4">
+            <img
+              class="card__img img-fluid"
+              src="/assets/NYPD_Badge.png"
+              alt="" />
+          </div>
+
+          <div
+            class="filter__text--wrapper col-md-8 p-lg-5 vstack d-flex justify-content-center">
+            <div class="filter__text--header mb-5">
+              <p class="filter__header--subTitle fw-light mb-0">
+                Use the following
+              </p>
+              <h2 class="filter__header--title fs-1 fw-bold">
+                <span class="theme-color">Filters</span> for your search
+              </h2>
+            </div>
+
+            <div class="filter__icon--list d-flex hstack flex-wrap gap-1">
+              <div class="filter__icon--wrapper col-2 filter__date text-center">
+                <span class="filter__icon--img text-center mx-4"></span>
+                <h4 class="filter__icon--title mt-5">Dates</h4>
+              </div>
+              <div
+                class="filter__icon--wrapper col-2 filter__location text-center">
+                <span class="filter__icon--img text-center mx-4"></span>
+                <h4 class="filter__icon--title mt-5">Locations</h4>
+              </div>
+              <div
+                class="filter__icon--wrapper col-2 filter__suspect text-center">
+                <span class="filter__icon--img text-center mx-4"></span>
+                <h4 class="filter__icon--title mt-5">Suspects</h4>
+              </div>
+              <div
+                class="filter__icon--wrapper col-2 filter__victim text-center">
+                <span class="filter__icon--img text-center mx-4"></span>
+                <h4 class="filter__icon--title mt-5">Victims</h4>
+              </div>
+            </div>
+
+            <a
+              class="filter__btn buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-3"
+              href="/src/reports.html">
+              Incident Reports
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-5" id="payroll_section">
+      <div class="card border-0 mb-3 bg-transparent">
+        <div class="middle_row row g-0 rounded-4" id="payroll_row">
+          <div
+            class="payroll__text--wrapper col-md-8 p-lg-5 vstack d-flex justify-content-center">
+            <div class="payroll__text--header mb-4">
+              <p class="payroll__header--subTitle fw-light mb-0">Lookup</p>
+              <h2 class="payroll__header--title fs-1 fw-bold">
+                All <span class="theme-color">NYPD</span> employees payroll
+              </h2>
+            </div>
+
+            <div class="payroll__description--wrapper mb-4">
+              <p class="payroll__description--text fs-5">
+                Search more than 500 thousand public records of NYPD Employees
+                to find out where your NY tax dollars are going. The Payrolls
+                section provides a database of names, positions, salaries and/or
+                total earnings for individuals who have been employed by the New
+                York City Police Department.
+              </p>
+            </div>
+            <a
+              class="filter__btn buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-3"
+              href="/src/payroll.html">
+              NYPD Payroll
+            </a>
+          </div>
+          <div
+            class="card__img--wrapper payroll__img--wrapper rounded-4 col-md-4">
+            <img
+              class="payroll__img card__img img-fluid"
+              src="/assets/police_salary_payroll.jpg"
+              alt="" />
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </section>
   </body>
 </html>
