@@ -27,6 +27,7 @@ sort by cmplnt_fr_dt
 //------------------------------------------------------------------------------------------
 const filterRow = document.querySelector(".filter__row");
 const payrollRow = document.querySelector(".payroll__row");
+const footer = document.querySelector("footer");
 
 //scrolling triggered animation
 const observer = new IntersectionObserver(
@@ -37,11 +38,12 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { rootMargin: "-150px" }
+  { rootMargin: "-50px" }
 );
 
 observer.observe(filterRow);
 observer.observe(payrollRow);
+observer.observe(footer);
 
 // Pre-Loader
 const preLoader = () => {

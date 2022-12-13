@@ -246,13 +246,13 @@ body {
 
 .filter__row {
   opacity: 0;
-  transform: translateX(-100%);
-  transition: all 1000ms ease;
+  transform: translateY(100%);
+  transition: all 500ms ease;
 }
 
 .filter__row.active {
   opacity: 1;
-  transform: translateX(0%);
+  transform: translateY(0%);
 }
 
 .filter__img--wrapper::after {
@@ -315,13 +315,13 @@ body {
 
 .payroll__row {
   opacity: 0;
-  transform: translateX(100%);
-  transition: all 1000ms ease;
+  transform: translateY(100%);
+  transition: all 500ms ease;
 }
 
 .payroll__row.active {
   opacity: 1;
-  transform: translateX(0%);
+  transform: translateY(0%);
 }
 
 .payroll__img--wrapper::after {
