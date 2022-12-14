@@ -8,9 +8,14 @@
   font-family: "Poppins", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #24242a;
   color: white;
+  position: relative;
 }
 
 .theme-color {
@@ -246,7 +251,7 @@ body {
 
 .filter__row {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(50%);
   transition: all 500ms ease;
 }
 
@@ -315,7 +320,7 @@ body {
 
 .payroll__row {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(50%);
   transition: all 500ms ease;
 }
 
@@ -337,6 +342,8 @@ body {
 /* --------------------- Payroll --------------------- */
 footer {
   background-color: #2e2e35;
+
+  height: 50px;
 }
 
 /* --------------------- Responsive Design --------------------- */

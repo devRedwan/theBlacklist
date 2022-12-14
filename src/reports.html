@@ -5,26 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous" />
     <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
       crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/src/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="reports.css" />
     <script
       src="https://kit.fontawesome.com/46139afb7e.js"
       crossorigin="anonymous"></script>
     <script src="/src/index.js" defer></script>
+    <script src="reports.js" defer></script>
     <title>The BlackList</title>
   </head>
 
   <body>
     <nav
-      class="navbar stiky-top-lg navbar-expand-lg navbar-dark mb-md-5 mb-lg-0">
+      class="reports__navbar navbar fixed-top navbar-expand-lg navbar-dark mb-md-5 mb-lg-0">
       <div class="container-fluid px-lg-4">
         <a class="navbar-brand fs-2 fw-bold logo" href="#"
           ><img
@@ -47,19 +52,401 @@
           class="collapse navbar-collapse justify-content-end nav-menu"
           id="navbarNav">
           <div class="navbar-nav align-items-center fw-bold nav-menu__list">
-            <a class="nav-link active" aria-current="page" href="../index.html"
-              >Home</a
+            <a class="nav-link" href="../index.html">Home</a>
+            <a class="nav-link mx-5 active" aria-current="page" href="#"
+              >Reports</a
             >
-            <a class="nav-link mx-5" href="#">Reports</a>
             <a class="nav-link" href="payroll.html">Payroll</a>
           </div>
         </div>
       </div>
     </nav>
 
-    <h1 class="d-flex justify-content-center align-items-center p-5 m-5">
-      THis is the Rports page
-    </h1>
+    <section class="container header__bg-img--wrapper">
+      <div class="row">
+        <img
+          src="/assets/NYPD_Badge.png"
+          alt=""
+          class="header_img img-fluid img-responsive"
+          draggable="false" />
+      </div>
+    </section>
+
+    <section class="reports-landing__container container py-5">
+      <div class="reports-landing__row row my-5">
+        <div class="reported__header vstack">
+          <h1 class="reports__header--title text-center fw-bold">
+            Officially
+            <span class="theme-color"> Reported </span> NYPD Complaints Data
+          </h1>
+          <p class="reported__header--subtitle text-center mt-0 theme-color">
+            From 2006 - Current
+          </p>
+        </div>
+
+        <div class="reported__sub-header py-5">
+          <h4 class="reported__sub-header text-center">
+            This dataset includes all valid felony, misdemeanor, and violation
+            crimes reported to the New York City Police Department (NYPD) from
+            2006 to the end of current year.
+          </h4>
+        </div>
+      </div>
+    </section>
+
+    <section class="reports-filter-container container">
+      <div class="report-filter-row row my-5">
+
+        <div class="report-keyword-search-column d-flex flex-column align-items-center ">
+
+            <div class="search_bar input-group justify-content-center ">
+                <div class="filter__keywordSearch form-floating col-8 ">
+                    <input
+                      type="text"
+                      class="input__keywordSearch form-control fs-4 fw-semibold bg-transparent ps-4"
+                      id="floatingSearchBar"
+                      placeholder="Keyword Search" />
+                      <label for="floatingKeywordSearch" class="keyword__search--label fs-5  ps-4"
+                      >Search by Date, Level of Offence, Borough, Keyword,
+                      etc.</label
+                    >
+                </div>
+              <button class="input-group-text px-4 keyword-search__submit"><i class="fa-solid fa-arrow-right keyword__search--arrow"></i></div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reports-table-container container py-5">
+      <div class="report-table-row row my-5">
+        <div class="report-table table-responsive">
+          <table
+            class="table table-dark table-striped table-hover text-nowrap text-center align-items-center">
+            <thead class="fs-3">
+              <tr class="align-middle">
+                <th scope="col" class="">
+                  Date of Incident <br />
+                  (MM/DD/YYYY)
+                </th>
+                <th scope="col">
+                  Time of Incident <br />
+                  (HH:MM:SS)
+                </th>
+                <th scope="col">Date of Report</th>
+                <th scope="col">Precinct</th>
+                <th scope="col">Borough</th>
+                <th scope="col">
+                  Exact Location of Occurance <br />
+                  (Lattitude, Longtitude)
+                </th>
+                <th scope="col">Level of Offence</th>
+                <th scope="col">Description of Offence</th>
+                <th scope="col">Transit Station Name <br />(If Applicable)</th>
+                <th scope="col">Suspect's <br />Age Group</th>
+                <th scope="col">Suspect's <br />Race Description</th>
+                <th scope="col">Suspect's <br />Sex Description</th>
+                <th scope="col">Victim's <br />Age Group</th>
+                <th scope="col">Victim's<br />Race Description</th>
+                <th scope="col">Victim's <br />Sex Description</th>
+              </tr>
+            </thead>
+
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>09/30/2022</td>
+                <td>10:00:50</td>
+                <td>09/30/2022</td>
+                <td>102</td>
+                <td>Queens</td>
+                <td>(40.79031415°, -73.94768606°)</td>
+                <td>Felony</td>
+                <td>Dangerous Drugs</td>
+                <td>103 Street</td>
+                <td>25-44</td>
+                <td>White Hispanic</td>
+                <td>Male</td>
+                <td>25-44</td>
+                <td>Black</td>
+                <td>Female</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <footer class="container-fluid" id="footer">
       <div class="row py-3" id="footer_row">
