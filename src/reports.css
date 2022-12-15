@@ -43,6 +43,10 @@
   color: #fff;
 }
 
+.keyword__search--label {
+  color: #ffffff80;
+}
+
 .keyword-search__submit {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -57,10 +61,14 @@
 
 .keyword__search--arrow {
   font-size: 2rem;
-  color: #fff;
+  color: #ffffff80;
 }
 
 /* --------------------- table --------------------- */
+
+.reports__table--header {
+  font-size: 1rem;
+}
 
 tr {
   font-size: 1.35rem;
