@@ -28,22 +28,52 @@
 
 /* --------------------- filter --------------------- */
 
+.filter__first--row .form-select,
+.filter__first--row .filter__date--input {
+  border-color: #ffffff80;
+  height: 5rem;
+}
+
+.filter__date--input::-webkit-calendar-picker-indicator {
+  background-color: #ffffff80;
+  font-size: large;
+}
+
+.filter__date--input:focus::-webkit-calendar-picker-indicator {
+  background-color: #d54857;
+}
+
+.filter__date--label {
+  background-color: #ffffff80;
+  border-color: #ffffff80;
+}
+
+.filter__first--row .form-select:focus,
+.filter__first--row .filter__date--input:focus {
+  border-color: #d54857;
+  box-shadow: none;
+}
+
 .input__keywordSearch {
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
-.input__keywordSearch {
+
+.input__keywordSearch,
+.floating__form--input {
   height: 6rem !important;
   border: solid 2px rgba(110, 110, 122, 0.5);
 }
 
-.input__keywordSearch:focus {
+.input__keywordSearch:focus,
+.floating__form--input:focus {
   border-color: #d54857;
   box-shadow: none;
   color: #fff;
 }
 
-.keyword__search--label {
+.keyword__search--label,
+.floating__form--label {
   color: #ffffff80;
 }
 
@@ -65,6 +95,9 @@
 }
 
 /* --------------------- table --------------------- */
+.alert {
+  transition: all 500ms ease-in-out;
+}
 
 .reports__table--header {
   font-size: 1rem;

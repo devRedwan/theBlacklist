@@ -18,7 +18,7 @@ let fetchData, fetchAPI;
 //executes the API call to pull all the data
 //sets the up the row inside the table
 async function renderAPIData() {
-  fetchAPI = await fetch(`${url}?$select=${filteredColumns()}&$limit=125`);
+  fetchAPI = await fetch(`${url}?$select=${filteredColumns()}&$limit=100`);
   fetchData = await fetchAPI.json();
   rowsElement.innerHTML = fetchData
     .map((data) => dataSetSkeleton(data))
@@ -109,6 +109,8 @@ const formattedSex = (rawData) => {
 };
 
 //sorting the tables based on columns
+
+//Date-Picker
 
 //all necessary function calls
 renderAPIData();
