@@ -29,6 +29,7 @@
 /* --------------------- filter --------------------- */
 
 .filter__first--row .form-select,
+.filter__second--row .form-select,
 .filter__first--row .filter__date--input {
   border-color: #ffffff80;
   height: 5rem;
@@ -43,12 +44,15 @@
   background-color: #d54857;
 }
 
-.filter__date--label {
+.filter__date--label,
+.filter__suspect--label,
+.filter__victim--label {
   background-color: #ffffff80;
   border-color: #ffffff80;
 }
 
 .filter__first--row .form-select:focus,
+.filter__second--row .form-select:focus,
 .filter__first--row .filter__date--input:focus {
   border-color: #d54857;
   box-shadow: none;
@@ -59,14 +63,12 @@
   border-bottom-left-radius: 1rem;
 }
 
-.input__keywordSearch,
-.floating__form--input {
+.input__keywordSearch {
   height: 6rem !important;
   border: solid 2px rgba(110, 110, 122, 0.5);
 }
 
-.input__keywordSearch:focus,
-.floating__form--input:focus {
+.input__keywordSearch:focus {
   border-color: #d54857;
   box-shadow: none;
   color: #fff;
@@ -92,6 +94,15 @@
 .keyword__search--arrow {
   font-size: 2rem;
   color: #ffffff80;
+}
+.keyword-search__submit.active .keyword__search--arrow {
+  color: #fff;
+}
+
+.filter__form--submit {
+  left: 0%;
+  transform: translateX(50%);
+  width: 50%;
 }
 
 /* --------------------- table --------------------- */

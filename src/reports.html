@@ -59,7 +59,9 @@
             <a class="nav-link mx-5 active" aria-current="page" href="#"
               >Reports</a
             >
-            <a class="nav-link" href="payroll.html">Payroll</a>
+            <a class="nav-link" href="../index.html#payroll_section"
+              >File A Report</a
+            >
           </div>
         </div>
       </div>
@@ -106,11 +108,11 @@
           </h1>
 
           <form class="report-filter__form" id="report-filter-form">
-            <div class="filter__first--row row g-5">
+            <div class="filter__first--row row g-5 mb-5">
               <div class="filter__borough col">
                 <div class="form-floating">
                   <select
-                    class="filter__select--borough form-select bg-transparent text-white pb-0 fs-4 fw-semibold"
+                    class="filter__select--borough form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                     aria-label="default select ">
                     <option
                       type="option"
@@ -147,7 +149,7 @@
                       >From</label
                     >
                   </div>
-                  <span class="filter__date--label input-group-text fs-4"
+                  <span class="filter__date--label input-group-text fs-5"
                     >Date</span
                   >
                   <div class="form-floating d-flex justify-content-between">
@@ -168,7 +170,7 @@
               <div class="filter__offense-level col">
                 <div class="form-floating">
                   <select
-                    class="filter__select--offense-level form-select bg-transparent text-white pb-0 fs-4 fw-semibold"
+                    class="filter__select--offense-level form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                     aria-label="default select ">
                     <option type="option" value="" selected></option>
                     <option type="option" value="FELONY">Felony</option>
@@ -187,362 +189,189 @@
             </div>
 
             <div
-              class="filter__age-sex col-12 d-flex align-items-center justify-content-center text-center">
-              <div class="filter__sex col-auto border p-2 m-4">
-                <label for="filter__sex"
-                  ><h4 class="fw-bold fs-4 theme-color">Sex</h4></label
-                >
-                <div class="filter__sex--suspectOrVictim">
-                  <div class="form-check form-check-inline">
-                    <input
-                      checked
-                      class="form-check-input fs-5"
-                      type="radio"
-                      name="inlineSexRadioOptions"
-                      id="inlineSexRadio1"
-                      value="SUSPECT" />
-                    <label class="form-check-label fs-5" for="inlineRadio1"
-                      >Suspect</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input fs-5"
-                      type="radio"
-                      name="inlineSexRadioOptions"
-                      id="inlineSexRadio2"
-                      value="VICTIM" />
-                    <label class="form-check-label fs-5" for="inlineRadio2"
-                      >Victim</label
-                    >
-                  </div>
-                </div>
-                <div class="filter__sex--maleOrFemale">
-                  <div
-                    class="filter__checkbox--male form-check form-check-inline">
-                    <input
-                      class="checkbox__male--input form-check-input"
-                      type="checkbox"
-                      id="inlineSexCheckbox1"
-                      value="MALE" />
-                    <label
-                      class="checkbox__male--label form-check-label"
-                      for="inlineSexCheckbox1"
-                      >Male</label
-                    >
-                  </div>
-                  <div
-                    class="filter__checkbox--female form-check form-check-inline">
-                    <input
-                      class="checkbox__female--input form-check-input"
-                      type="checkbox"
-                      id="inlineSexCheckbox2"
-                      value="FEMALE" />
-                    <label
-                      class="checkbox__female--label form-check-label"
-                      for="inlineSexCheckbox2"
-                      >Female</label
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="filter__age_group col-auto border p-2 m-4">
-                <label for="filter__age-group"
-                  ><h4 class="fw-bold fs-4 theme-color">Age Group</h4></label
-                >
-                <div class="filter__age-group--suspectOrVictim">
-                  <div class="form-check form-check-inline">
-                    <input
-                      checked
-                      class="form-check-input fs-5"
-                      type="radio"
-                      name="inlineAgeGroupRadioOptions"
-                      id="inlineAgeGroupRadio1"
-                      value="SUSPECT" />
-                    <label class="form-check-label fs-5" for="inlineRadio1"
-                      >Suspect</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input fs-5"
-                      type="radio"
-                      name="inlineAgeGroupRadioOptions"
-                      id="inlineAgeGroupRadio2"
-                      value="VICTIM" />
-                    <label class="form-check-label fs-5" for="inlineRadio2"
-                      >Victim</label
-                    >
-                  </div>
-                </div>
-                <div class="filter__age-group--age-groups">
-                  <div
-                    class="filter__checkbox--ageGrouplessThan18 form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGrouplessThan18--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox1"
-                      value="lessThan18" />
-                    <label
-                      class="checkbox__ageGrouplessThan18--label form-check-label"
-                      for="inlineAgeGroupCheckbox1">
-                      &lt;18
-                    </label>
-                  </div>
-                  <div
-                    class="filter__checkbox--ageGroup18to24 form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGroup18to24--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox2"
-                      value="18to24" />
-                    <label
-                      class="checkbox__ageGroup18to24--label form-check-label"
-                      for="inlineAgeGroupCheckbox2"
-                      >18 - 24</label
-                    >
-                  </div>
-                  <div
-                    class="filter__checkbox--ageGroup25to44 form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGroup25to44--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox3"
-                      value="25to44" />
-                    <label
-                      class="checkbox__ageGroup18to24--label form-check-label"
-                      for="inlineAgeGroupCheckbox3"
-                      >25 - 44</label
-                    >
-                  </div>
-                  <div
-                    class="filter__checkbox--ageGroup45to64 form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGroup45to64--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox4"
-                      value="45to64" />
-                    <label
-                      class="checkbox__ageGroup45to64--label form-check-label"
-                      for="inlineAgeGroupCheckbox4"
-                      >45 - 64</label
-                    >
-                  </div>
-                  <div
-                    class="filter__checkbox--ageGroup65Plus form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGroup65Plus--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox5"
-                      value="65Plus" />
-                    <label
-                      class="checkbox__ageGroup65Plus--label form-check-label"
-                      for="inlineAgeGroupCheckbox5"
-                      >65+</label
-                    >
-                  </div>
-                  <div
-                    class="filter__checkbox--ageGroupunknown form-check form-check-inline">
-                    <input
-                      class="checkbox__ageGroupunknown--input form-check-input"
-                      type="checkbox"
-                      id="inlineAgeGroupCheckbox6"
-                      value="unknown" />
-                    <label
-                      class="checkbox__ageGroupunknown--label form-check-label"
-                      for="inlineAgeGroupCheckbox6"
-                      >Unknown</label
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="filter__race col border p-2 m-4">
-              <label for="filter__race"
-                ><h4 class="fw-bold fs-4 theme-color">Race</h4></label
-              >
-              <div class="filter__race--suspectOrVictim">
-                <div class="form-check form-check-inline">
-                  <input
-                    checked
-                    class="form-check-input fs-5"
-                    type="radio"
-                    name="inlineRaceRadioOptions"
-                    id="inlineRaceRadio1"
-                    value="SUSPECT" />
-                  <label class="form-check-label fs-5" for="inlineRadio1"
-                    >Suspect</label
+              class="filter__second--row row px-0 mb-5 justify-content-around">
+              <div class="filter__suspect col-auto px-0">
+                <div class="suspect__input-group input-group mb-3">
+                  <span class="input-group-text filter__suspect--label"
+                    >Suspect</span
                   >
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input fs-5"
-                    type="radio"
-                    name="inlineRaceRadioOptions"
-                    id="inlineRaceRadio2"
-                    value="VICTIM" />
-                  <label class="form-check-label fs-5" for="inlineRadio2"
-                    >Victim</label
-                  >
-                </div>
-              </div>
-              <div class="filter__race--race-list">
-                <div
-                  class="filter__checkbox--raceWhite form-check form-check-inline">
-                  <input
-                    class="checkbox__raceWhite--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox1"
-                    value="white" />
-                  <label
-                    class="checkbox__raceWhite--label form-check-label"
-                    for="inlineRaceCheckbox1">
-                    White
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceWhiteHispanic form-check form-check-inline">
-                  <input
-                    class="checkbox__raceWhiteHispanic--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox2"
-                    value="whiteHispanic" />
-                  <label
-                    class="checkbox__raceWhiteHispanic--label form-check-label"
-                    for="inlineRaceCheckbox2">
-                    White Hispanic
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceBlack form-check form-check-inline">
-                  <input
-                    class="checkbox__raceBlack--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox3"
-                    value="black" />
-                  <label
-                    class="checkbox__raceBlack--label form-check-label"
-                    for="inlineRaceCheckbox3">
-                    Black
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceBlackHispanic form-check form-check-inline">
-                  <input
-                    class="checkbox__raceBlackHispanic--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox4"
-                    value="blackHispanic" />
-                  <label
-                    class="checkbox__raceBlackHispanic--label form-check-label"
-                    for="inlineRaceCheckbox4">
-                    Black Hispanic
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceAsianPacificIslander form-check form-check-inline">
-                  <input
-                    class="checkbox__raceAsianPacificIslander--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox5"
-                    value="asianPacificIslander" />
-                  <label
-                    class="checkbox__raceAsianPacificIslander--label form-check-label"
-                    for="inlineRaceCheckbox5">
-                    Asian / Pacific Islander
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceAmericanIndianAlaskanNative form-check form-check-inline">
-                  <input
-                    class="checkbox__raceAmericanIndianAlaskanNative--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox6"
-                    value="americanIndianAlaskanNative" />
-                  <label
-                    class="checkbox__raceAmericanIndianAlaskanNative--label form-check-label"
-                    for="inlineRaceCheckbox6">
-                    American Indian / Alaskan Native
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceOther form-check form-check-inline">
-                  <input
-                    class="checkbox__raceOther--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox7"
-                    value="other" />
-                  <label
-                    class="checkbox__raceOther--label form-check-label"
-                    for="inlineRaceCheckbox7">
-                    Other
-                  </label>
-                </div>
-                <div
-                  class="filter__checkbox--raceUnknown form-check form-check-inline">
-                  <input
-                    class="checkbox__raceUnknown--input form-check-input"
-                    type="checkbox"
-                    id="inlineRaceCheckbox8"
-                    value="unknown" />
-                  <label
-                    class="checkbox__raceUnknown--label form-check-label"
-                    for="inlineRaceCheckbox8">
-                    Unknown
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="filter__dates col-4 p-2 m-4 border">
-              <label
-                for="filter__dates--label"
-                class="filter__dates--label d-flex justify-content-center"
-                ><h4 class="fw-bold theme-color">Dates</h4></label
-              >
-              <div class="filter__dates--fromTo d-flex justify-content-between">
-                <div class="filter__date--from mx-2 border">
-                  <label class="date__from--label" for="start"
-                    ><h5 class="date__from">From</h5></label
-                  >
-                  <input
-                    class="filter__from-date datePicker"
-                    type="date"
-                    id="from" />
-                </div>
-                <div class="filter__date--to mx-2 border">
-                  <label class="date__to--label" for="start"
-                    ><h5 class="date__to">To</h5></label
-                  >
-                  <input
-                    class="filter__to-date datePicker"
-                    type="date"
-                    id="date__to" />
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="col btn btn-primary">Submit</button>
-          </form>
-        </div>
 
-        <div
-          class="report-keyword-search-column d-flex flex-column align-items-center">
-          <div class="search_bar input-group justify-content-center">
-            <div class="filter__keywordSearch form-floating col-8">
-              <input
-                type="text"
-                class="input__keywordSearch form-control fs-4 fw-semibold bg-transparent ps-4"
-                id="floatingSearchBar"
-                placeholder="Keyword Search" />
-              <label
-                for="floatingKeywordSearch"
-                class="keyword__search--label fs-5 ps-4"
-                >Search by Date, Level of Offence, Borough, Keyword, etc.</label
-              >
+                  <div class="form-floating">
+                    <select
+                      class="suspect__select--sex form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="suspectFloatingSexInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="suspect_male">Male</option>
+                      <option type="option" value="suspect_female">
+                        Female
+                      </option>
+                    </select>
+                    <label for="suspectFloatingSexInputGroup" class="fs-5"
+                      >Sex</label
+                    >
+                  </div>
+
+                  <div class="form-floating">
+                    <select
+                      class="suspect__select--age-group form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="suspectFloatingAgeGroupInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="suspect_lessThan18">
+                        &lt;18
+                      </option>
+                      <option type="option" value="suspect_18to24">
+                        18-24
+                      </option>
+                      <option type="option" value="suspect_25to44">
+                        25-44
+                      </option>
+                      <option type="option" value="suspect_45to64">
+                        45-64
+                      </option>
+                      <option type="option" value="suspect_65Plus">65+</option>
+                      <option type="option" value="unknown">Unknown</option>
+                    </select>
+                    <label for="suspectFloatingAgeGroupInputGroup" class="fs-5"
+                      >Age Group</label
+                    >
+                  </div>
+
+                  <div class="form-floating">
+                    <select
+                      class="suspect__select--race form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="suspectFloatingRaceInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="suspect_white">White</option>
+                      <option type="option" value="suspect_whiteHispanic">
+                        White Hispanic
+                      </option>
+                      <option type="option" value="suspect_black">Black</option>
+                      <option type="option" value="suspect_blackHispanic">
+                        Black Hispanic
+                      </option>
+                      <option
+                        type="option"
+                        value="suspect_asianPacificIslander">
+                        Asian / Pacific Islander
+                      </option>
+                      <option
+                        type="option"
+                        value="suspect_americanIndianAlaskanNative">
+                        American Indian / Alaskan Native
+                      </option>
+                      <option type="option" value="suspect_other">Other</option>
+                      <option type="option" value="unknown">Unknown</option>
+                    </select>
+                    <label for="suspectFloatingRaceInputGroup" class="fs-5"
+                      >Race</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="filter__victim col-auto px-0">
+                <div class="victim__input-group input-group mb-3">
+                  <span class="input-group-text filter__victim--label"
+                    >Victim</span
+                  >
+
+                  <div class="form-floating">
+                    <select
+                      class="victim__select--sex form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="victimFloatingSexInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="victim_male">Male</option>
+                      <option type="option" value="victim_female">
+                        Female
+                      </option>
+                    </select>
+                    <label for="victimFloatingSexInputGroup" class="fs-5"
+                      >Sex</label
+                    >
+                  </div>
+
+                  <div class="form-floating">
+                    <select
+                      class="victim__select--age-group form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="victimFloatingAgeGroupInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="victim_lessThan18">
+                        &lt;18
+                      </option>
+                      <option type="option" value="victim_18to24">18-24</option>
+                      <option type="option" value="victim_25to44">25-44</option>
+                      <option type="option" value="victim_45to64">45-64</option>
+                      <option type="option" value="victim_65Plus">65+</option>
+                      <option type="option" value="unknown">Unknown</option>
+                    </select>
+                    <label for="victimFloatingAgeGroupInputGroup" class="fs-5"
+                      >Age Group</label
+                    >
+                  </div>
+
+                  <div class="form-floating">
+                    <select
+                      class="victim__select--race form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
+                      aria-label="default select"
+                      id="victimFloatingRaceInputGroup">
+                      <option type="option" value="" selected></option>
+                      <option type="option" value="victim_white">White</option>
+                      <option type="option" value="victim_whiteHispanic">
+                        White Hispanic
+                      </option>
+                      <option type="option" value="victim_black">Black</option>
+                      <option type="option" value="victim_blackHispanic">
+                        Black Hispanic
+                      </option>
+                      <option type="option" value="victim_asianPacificIslander">
+                        Asian / Pacific Islander
+                      </option>
+                      <option
+                        type="option"
+                        value="victim_americanIndianAlaskanNative">
+                        American Indian / Alaskan Native
+                      </option>
+                      <option type="option" value="victim_other">Other</option>
+                      <option type="option" value="unknown">Unknown</option>
+                    </select>
+                    <label for="victimFloatingRaceInputGroup" class="fs-5"
+                      >Race</label
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
-            <button class="input-group-text px-4 keyword-search__submit">
-              <i class="fa-solid fa-arrow-right keyword__search--arrow"></i>
+            <button
+              class="filter__btn filter__form--submit buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-4"
+              type="submit">
+              Submit
             </button>
-          </div>
+
+            <div
+              class="filter__form--last-row report-keyword-search-column d-flex flex-column align-items-center">
+              <div class="search_bar input-group justify-content-center mt-5">
+                <div class="filter__keywordSearch form-floating col-8">
+                  <input
+                    type="text"
+                    class="input__keywordSearch form-control fs-4 fw-semibold bg-transparent ps-4"
+                    id="floatingSearchBar"
+                    placeholder="Keyword Search" />
+                  <label
+                    for="floatingKeywordSearch"
+                    class="keyword__search--label fs-5 ps-4"
+                    >Search the whole table using Keywords</label
+                  >
+                </div>
+                <button class="input-group-text px-4 keyword-search__submit">
+                  <i class="fa-solid fa-arrow-right keyword__search--arrow"></i>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -555,9 +384,10 @@
           <h1 class="alert-title">ALERT</h1>
           <h5>
             This table is only capable of showing the first 100 results from
-            your search. We are looking into getting all the information from
-            NYPD at once. You will be first to see it when we have the
-            functionality available.
+            your search. <br />
+            We are looking into getting all the information from NYPD at once.
+            You will be the first to see it when we have the functionality
+            available.
           </h5>
           <button
             class="btn-close"
@@ -592,7 +422,8 @@
           <table
             class="table table-dark table-striped table-hover text-nowrap text-center align-items-center data-filter-control-multiple-search-delimiter"
             id="reported-complaints-data-table">
-            <thead class="reports__table--header">
+            <thead class="reports__table--header text-center">
+              Latest Updates are from : 09/30/2022
               <tr class="align-middle">
                 <th data-sort="date_of_incident" scope="col" class="fw-light">
                   Date of Incident <br />(MM/DD/YYYY)
