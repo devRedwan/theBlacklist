@@ -11,46 +11,75 @@ searchBar.addEventListener("focusout", () => {
 
 /* --------------------- rendering data from the API --------------------- */
 const url = "https://data.cityofnewyork.us/resource/qgea-i56i.json";
-const rowsElement = document.querySelector(".reports__table--rows");
-const rowElements = rowsElement.getElementsByTagName("tr");
+const table = document.querySelector("#reported-complaints-data-table");
+const tbody = document.querySelector(".reports__table--rows");
+const rows = tbody.getElementsByTagName("tr");
+const tableHeaders = document.querySelectorAll(".table__column--header");
 let fetchData, fetchAPI;
 
 //executes the API call to pull all the data
 //sets the up the row inside the table
 async function renderAPIData() {
-  fetchAPI = await fetch(`${url}?$select=${filteredColumns()}&$limit=100`);
+  fetchAPI = await fetch(`${url}?$select=${filteredColumns()}&$limit=10`);
   fetchData = await fetchAPI.json();
-  rowsElement.innerHTML = fetchData
-    .map((data) => dataSetSkeleton(data))
-    .join("");
+
+  tbody.innerHTML = fetchData.map((data) => dataSetSkeleton(data)).join("");
 }
 
 const dataSetSkeleton = (reportData) => {
   const skeleton = `<tr class="reports__table--row fs-5">
-  <td>${formattedDate(reportData.date_of_incident) || "UNKNOWN"}</td>
-  <td>${reportData.time_of_incident || "UNKNOWN"}</td>
-  <td>${formattedDate(reportData.date_reported_to_police) || "UNKNOWN"}</td>
-  <td>${reportData.precinct || "UNKNOWN"}</td>
-  <td>${reportData.borough || "UNKNOWN"}</td>
-  <td>${reportData.exact_location_of_occurance.latitude}, ${
-    reportData.exact_location_of_occurance.longitude
+  <td data-sort-type="date" data-sort-key="date_of_incident" >${
+    formattedDate(reportData.date_of_incident) || "UNKNOWN"
   }</td>
-  <td>${reportData.level_of_offense || "UNKNOWN"}</td>
-  <td>${reportData.description_of_offense || "UNKNOWN"}</td>
-  <td>${reportData.transit_station_name || "UNKNOWN"}</td>
-  <td>${reportData.suspect_age_group || "UNKNOWN"}</td>
-  <td>${reportData.suspect_race || "UNKNOWN"}</td>
-  <td>${formattedSex(reportData.suspect_sex) || "UNKNOWN"}</td>
-  <td>${reportData.victim_age_group || "UNKNOWN"}</td>
-  <td>${reportData.victim_race || "UNKNOWN"}</td>
-  <td>${formattedSex(reportData.victim_sex) || "UNKNOWN"}</td></tr>`;
+  <td data-sort-type="time" data-sort-key="time_of_incident" >${
+    reportData.time_of_incident || "UNKNOWN"
+  }</td>
+  <td data-sort-type="date" data-sort-key="date_reported_to_police" >${
+    formattedDate(reportData.date_reported_to_police) || "UNKNOWN"
+  }</td>
+  <td data-sort-type="integer" data-sort-key="precinct" >${
+    reportData.precinct || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="borough" >${
+    reportData.borough || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="exact_location_of_occurance" >${
+    reportData.exact_location_of_occurance.latitude
+  }, ${reportData.exact_location_of_occurance.longitude}</td>
+  <td data-sort-type="string" data-sort-key="level_of_offense" >${
+    reportData.level_of_offense || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="description_of_offense" >${
+    reportData.description_of_offense || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="transit_station_name" >${
+    reportData.transit_station_name || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="suspect_age_group" >${
+    reportData.suspect_age_group || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="suspect_race" >${
+    reportData.suspect_race || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="suspect_sex" >${
+    formattedSex(reportData.suspect_sex) || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="victim_age_group" >${
+    reportData.victim_age_group || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="victim_race" >${
+    reportData.victim_race || "UNKNOWN"
+  }</td>
+  <td data-sort-type="string" data-sort-key="victim_sex" >${
+    formattedSex(reportData.victim_sex) || "UNKNOWN"
+  }</td></tr>`;
   return skeleton;
 };
 
 //styles the unknown values to be almost invisible
 const stylingNullValues = () => {
-  for (i = 0; i < rowElements.length; i++) {
-    let cellsInRow = rowElements[i].cells;
+  for (i = 0; i < rows.length; i++) {
+    let cellsInRow = rows[i].cells;
     for (j = 0; j < cellsInRow.length; j++) {
       if (cellsInRow[j].innerText === "UNKNOWN") {
         cellsInRow[j].style.opacity = "0.5";
@@ -109,8 +138,65 @@ const formattedSex = (rawData) => {
 };
 
 //sorting the tables based on columns
+let sortAscending = true;
 
-//Date-Picker
+const sortColumns = (event) => {
+  const compare = (sortAscending, compA, compB) => {
+    if (sortAscending) {
+      if (compA < compB) {
+        return -1;
+      }
+      if (compA > compB) {
+        return 1;
+      }
+    } else {
+      if (compA > compB) {
+        return -1;
+      }
+      if (compA < compB) {
+        return 1;
+      }
+    }
+  };
+  const sortKey = event.target.getAttribute("data-sort");
+  const rowsArray = [...rows];
+
+  rowsArray.sort(function (a, b) {
+    const cellA = a.querySelector(`td[data-sort-key="${sortKey}"]`);
+    const cellB = b.querySelector(`td[data-sort-key="${sortKey}"]`);
+    let valA = cellA.textContent;
+    let valB = cellB.textContent;
+    const sortType = cellA.getAttribute("data-sort-type");
+
+    if (sortType === "integer") {
+      let intA = parseInt(valA);
+      let intB = parseInt(valB);
+      let compA = intA;
+      let compB = intB;
+      return compare(sortAscending, compA, compB);
+    } else if (sortType === "date") {
+      // If the values are dates, parse them and use the parsed values for comparison
+      let dateFormat = "MM/DD/YYYY";
+      let dateA = new Date(valA);
+      let dateB = new Date(valB);
+      let compA = dateA.getTime();
+      let compB = dateB.getTime();
+      return compare(sortAscending, compA, compB);
+    } else {
+      // If the values are strings, use the original values for comparison
+      let compA = valA;
+      let compB = valB;
+      return compare(sortAscending, compA, compB);
+    }
+    return 0;
+  });
+
+  sortAscending = !sortAscending;
+  rowsArray.forEach((row) => {
+    tbody.appendChild(row);
+  });
+};
+//finished sorting the table based on column
 
 //all necessary function calls
 renderAPIData();

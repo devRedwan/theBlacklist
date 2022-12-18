@@ -124,6 +124,7 @@ td {
 
 th {
   color: #d54857;
+  cursor: pointer;
 }
 
 th,

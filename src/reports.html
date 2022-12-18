@@ -410,8 +410,12 @@
           class="alert alert-primary alert-dismissible text-center fade show"
           role="alert">
           <h5>
-            To navigate between columns, click anywhere in the table, then use
-            the arrow keys on your keyboard
+            <span class="theme-color fs-4 fw-semibold">
+              Click on the column headers to sort in ascending or descending
+              order.
+            </span>
+            <br />To navigate between columns outside of screen view, click
+            anywhere in the table, then use the arrow keys on your keyboard.
           </h5>
           <button
             class="btn-close"
@@ -424,62 +428,125 @@
             id="reported-complaints-data-table">
             <thead class="reports__table--header text-center">
               Latest Updates are from : 09/30/2022
-              <tr class="align-middle">
-                <th data-sort="date_of_incident" scope="col" class="fw-light">
+              <tr class="table__header--row align-middle">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="date_of_incident"
+                  data-sort-type="date"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Date of Incident <br />(MM/DD/YYYY)
                 </th>
-                <th data-sort="time_of_incident" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="time_of_incident"
+                  data-sort-type="time"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Time of Incident <br />(HH:MM:SS)
                 </th>
                 <th
+                  onclick="sortColumns(event)"
                   data-sort="date_reported_to_police"
+                  data-sort-type="date"
                   scope="col"
-                  class="fw-light">
+                  class="table__column--header fw-light">
                   Date Reported
                 </th>
-                <th data-sort="precinct" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="precinct"
+                  data-sort-type="integer"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Precinct
                 </th>
-                <th data-sort="borough" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="borough"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Borough
                 </th>
                 <th
+                  onclick="sortColumns(event)"
                   data-sort="exact_location_of_occurance"
+                  data-sort-type="string"
                   scope="col"
-                  class="fw-light">
+                  class="table__column--header fw-light">
                   Exact Location of Occurance <br />(Lattitude, Longtitude)
                 </th>
-                <th data-sort="level_of_offense" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="level_of_offense"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Level of Offence
                 </th>
                 <th
+                  onclick="sortColumns(event)"
                   data-sort="description_of_offense"
+                  data-sort-type="string"
                   scope="col"
-                  class="fw-light">
+                  class="table__column--header fw-light">
                   Description of Offence
                 </th>
                 <th
+                  onclick="sortColumns(event)"
                   data-sort="transit_station_name"
+                  data-sort-type="string"
                   scope="col"
-                  class="fw-light">
+                  class="table__column--header fw-light">
                   Transit Station Name <br />(If Applicable)
                 </th>
-                <th data-sort="suspect_age_group" scope="col" class="fw-light">
-                  Suspect's <br />Age Group
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="suspect_age_group"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
+                  Suspect's <br />Age Group/th>
                 </th>
-                <th data-sort="suspect_race" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="suspect_race"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Suspect's <br />Race Description
                 </th>
-                <th data-sort="suspect_sex" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="suspect_sex"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Suspect's <br />Sex Description
                 </th>
-                <th data-sort="victim_age_group" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="victim_age_group"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Victim's <br />Age Group
                 </th>
-                <th data-sort="victim_race" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="victim_race"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Victim's<br />Race Description
                 </th>
-                <th data-sort="victim_sex" scope="col" class="fw-light">
+                <th
+                  onclick="sortColumns(event)"
+                  data-sort="victim_sex"
+                  data-sort-type="string"
+                  scope="col"
+                  class="table__column--header fw-light">
                   Victim's <br />Sex Description
                 </th>
               </tr>
