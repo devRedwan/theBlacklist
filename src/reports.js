@@ -1,6 +1,21 @@
+const table = document.querySelector("#reported-complaints-data-table");
+const tableHeaders = document.querySelectorAll(".table__column--header");
+const tbody = document.querySelector(".reports__table--rows");
+const rows = tbody.getElementsByTagName("tr");
+const form = document.getElementById("report-filter-form");
+const filterDateFrom = document.getElementById("filter__date__from");
+const filterDateTo = document.getElementById("filter__date__to");
+const searchBar = document.querySelector(".input__keywordSearch");
+const searchButton = document.querySelector(".keyword-search__submit");
+const latestUpdateDatePara = document.querySelector(".latest__updated__date");
+const url = "https://data.cityofnewyork.us/resource/5uac-w243.json";
+let apiParams = {};
+let apiParamsDate = {};
+let apiCallString = "";
+let apiCallStringDate = "";
+let sortAscending = true;
+let fetchData, fetchAPI, latestReportDate;
 /* --------------------- Table css filter class --------------------- */
-let searchBar = document.querySelector(".input__keywordSearch");
-let searchButton = document.querySelector(".keyword-search__submit");
 
 searchBar.addEventListener("focusin", () => {
   searchButton.classList.add("active");
@@ -9,23 +24,23 @@ searchBar.addEventListener("focusout", () => {
   searchButton.classList.remove("active");
 });
 
+const filterTable = () => {
+  let userInput = searchBar.value.toUpperCase();
+  for (let i = 0; i < rows.length; i++) {
+    let cells = rows[i].getElementsByTagName("td");
+    let showRow = false;
+    for (let j = 0; j < cells.length; j++) {
+      if (cells[j].textContent.toUpperCase().indexOf(userInput) > -1) {
+        showRow = true;
+        break;
+      }
+    }
+  }
+};
+
 /* --------------------- rendering data from the API --------------------- */
-const url = "https://data.cityofnewyork.us/resource/qgea-i56i.json";
-const table = document.querySelector("#reported-complaints-data-table");
-const tbody = document.querySelector(".reports__table--rows");
-const rows = tbody.getElementsByTagName("tr");
-const tableHeaders = document.querySelectorAll(".table__column--header");
-let fetchData, fetchAPI;
 
-//executes the API call to pull all the data
 //sets the up the row inside the table
-async function renderAPIData() {
-  fetchAPI = await fetch(`${url}?$select=${filteredColumns()}&$limit=10`);
-  fetchData = await fetchAPI.json();
-
-  tbody.innerHTML = fetchData.map((data) => dataSetSkeleton(data)).join("");
-}
-
 const dataSetSkeleton = (reportData) => {
   const skeleton = `<tr class="reports__table--row fs-5">
   <td data-sort-type="date" data-sort-key="date_of_incident" >${
@@ -119,7 +134,7 @@ const filteredColumns = () => {
   return filteredColumn;
 };
 
-//formats the date into MM/DD/format
+//formats the date into MM/DD/format ---------------
 const formattedDate = (rawDate) => {
   let date = new Date(rawDate);
   let year = date.getFullYear();
@@ -128,7 +143,7 @@ const formattedDate = (rawDate) => {
   return `${month}/${day}/${year}`;
 };
 
-//Instead of showing 'M' or "f", show 'MALE' or 'FEMALE'
+//Instead of showing 'M' or "f", shows 'MALE' or 'FEMALE' ---------------
 const formattedSex = (rawData) => {
   if (rawData === "M") {
     return "MALE";
@@ -137,9 +152,7 @@ const formattedSex = (rawData) => {
   } else return "UNKNOWN";
 };
 
-//sorting the tables based on columns
-let sortAscending = true;
-
+//sorting the tables based on columns ---------------
 const sortColumns = (event) => {
   const compare = (sortAscending, compA, compB) => {
     if (sortAscending) {
@@ -196,10 +209,143 @@ const sortColumns = (event) => {
     tbody.appendChild(row);
   });
 };
-//finished sorting the table based on column
+
+//scroll to view after click ---------------
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  section.scrollIntoView({ behavior: "smooth" });
+  form.reset();
+  apiCallString = "";
+  apiCallStringDate = "";
+  apiParams = {};
+  apiParamsDate = {};
+};
+
+//filtering Table ---------------
+//set the max date to today
+/* use this when the max date shoudl be dynamically set to today
+function updateMaxAttribute() {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+  const day = currentDate.getDate().toString().padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+  filterDateFrom.setAttribute("max", formattedDate);
+  filterDateTo.setAttribute("max", formattedDate);
+}
+*/
+//filter using dates
+const handleDateChange = (event) => {
+  const fromDate = filterDateFrom.value;
+  const toDate = filterDateTo.value;
+  const dateId = event.target.id;
+  const selectedDate = event.target.value;
+
+  //stops user from entering a to date before from date
+  if (toDate && fromDate > toDate) {
+    alert("The 'To' date must be after the selected 'From' date");
+    filterDateTo.value = "";
+  } else if (fromDate) {
+    filterDateTo.min = fromDate;
+  }
+
+  if (dateId === "filter__date__from") {
+    apiParamsDate.cmplnt_fr_dt_from = selectedDate;
+  }
+  if (dateId === "filter__date__to") {
+    apiParamsDate.cmplnt_fr_dt_to = selectedDate;
+  }
+  filterDateTo.min = "2006-01-01";
+};
+
+//filter using everything else
+const handleChange = (event) => {
+  const selectedValue = event.target.value;
+  const selectId = event.target.id;
+  const selectElements = document.querySelectorAll(".form-floating select");
+  const optionValues = {};
+  selectElements.forEach((selectElement) => {
+    const id = selectElement.id;
+    const options = selectElement.options;
+    const values = [];
+    for (let i = 0; i < options.length; i++) {
+      values.push(options[i].value.toUpperCase());
+    }
+    optionValues[id] = values;
+  });
+  if (selectId === "filter__select__offense_level") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.law_cat_cd = selectedValue)
+      : "";
+  } else if (selectId === "filter__select__borough") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.boro_nm = selectedValue)
+      : "";
+  } else if (selectId === "suspect__select__sex") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.susp_sex = selectedValue)
+      : "";
+  } else if (selectId === "suspect__select__age") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.susp_age_group = selectedValue)
+      : "";
+  } else if (selectId === "suspect__select__race") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.susp_race = selectedValue)
+      : "";
+  } else if (selectId === "victim__select__sex") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.vic_sex = selectedValue)
+      : "";
+  } else if (selectId === "victim__select__age") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.vic_age_group = selectedValue)
+      : "";
+  } else if (selectId === "victim__select__race") {
+    optionValues[selectId].includes(selectedValue)
+      ? (apiParams.vic_race = selectedValue)
+      : "";
+  }
+};
+
+//resets form after submit button is clicked
+
+//executes the API call to pull all the data
+async function renderAPIData() {
+  for (const [key, value] of Object.entries(apiParams)) {
+    if (value) {
+      apiCallString += `${key}=${value}&`;
+    }
+  }
+  for (const key in apiParamsDate) {
+    if (apiParamsDate.cmplnt_fr_dt_from && !apiParamsDate.cmplnt_fr_dt_to) {
+      apiCallStringDate += `$where=cmplnt_fr_dt >= '${apiParamsDate.cmplnt_fr_dt_from}'&`;
+
+      apiParamsDate = {};
+    } else if (
+      !apiParamsDate.cmplnt_fr_dt_from &&
+      apiParamsDate.cmplnt_fr_dt_to
+    ) {
+      apiCallStringDate += `$where=cmplnt_fr_dt <= '${apiParamsDate.cmplnt_fr_dt_to}'&`;
+
+      apiParamsDate = {};
+    } else if (
+      apiParamsDate.cmplnt_fr_dt_from &&
+      apiParamsDate.cmplnt_fr_dt_to
+    ) {
+      apiCallStringDate += `$where=cmplnt_fr_dt between '${apiParamsDate.cmplnt_fr_dt_from}' and '${apiParamsDate.cmplnt_fr_dt_to}'&`;
+      apiParamsDate = {};
+    }
+  }
+
+  let apiEndpoint = `${url}?$limit=100&$select=${filteredColumns()}&$order=date_of_incident DESC&${apiCallString}${apiCallStringDate}`;
+  fetchAPI = await fetch(apiEndpoint);
+  fetchData = await fetchAPI.json();
+
+  tbody.innerHTML = fetchData.map((data) => dataSetSkeleton(data)).join("");
+}
 
 //all necessary function calls
-renderAPIData();
 setTimeout(() => {
   stylingNullValues();
 }, 2000);

@@ -85,7 +85,7 @@
             <span class="theme-color"> Reported </span> NYPD Complaints Data
           </h1>
           <p class="reported__header--subtitle text-center mt-0 theme-color">
-            From 2006 - Current
+            2022 Year-To-Date
           </p>
         </div>
 
@@ -93,7 +93,7 @@
           <h4 class="reported__sub-header text-center">
             This dataset includes all valid felony, misdemeanor, and violation
             crimes reported to the New York City Police Department (NYPD) from
-            2006 to the end of current year.
+            the beginning to the end of current year.
           </h4>
         </div>
       </div>
@@ -112,6 +112,8 @@
               <div class="filter__borough col">
                 <div class="form-floating">
                   <select
+                    onchange="handleChange(event)"
+                    id="filter__select__borough"
                     class="filter__select--borough form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                     aria-label="default select ">
                     <option
@@ -139,12 +141,15 @@
                 <div class="input-group mb-3 d-flex justify-content-center">
                   <div class="form-floating d-flex justify-content-between">
                     <input
+                      onchange="handleDateChange(event)"
                       type="date"
+                      min="2006-01-01"
+                      max="2022-09-30"
                       class="filter__date--input form-control bg-transparent text-white pb-0"
-                      id="floatingFromDateInputGroup1"
+                      id="filter__date__from"
                       placeholder="Date" />
                     <label
-                      for="floatingFromDateInputGroup1"
+                      for="filter__date--from"
                       class="floating__form--label fs-5"
                       >From</label
                     >
@@ -154,13 +159,14 @@
                   >
                   <div class="form-floating d-flex justify-content-between">
                     <input
+                      onchange="handleDateChange(event)"
                       type="date"
+                      min="2006-01-01"
+                      max="2022-09-30"
                       class="filter__date--input form-control bg-transparent text-white pb-0"
-                      id="floatingToDateInputGroup2"
+                      id="filter__date__to"
                       placeholder="Date" />
-                    <label
-                      for="floatingToDateInputGroup2"
-                      class="floating__form--label"
+                    <label for="filter__date--to" class="floating__form--label"
                       >To</label
                     >
                   </div>
@@ -170,6 +176,8 @@
               <div class="filter__offense-level col">
                 <div class="form-floating">
                   <select
+                    id="filter__select__offense_level"
+                    onchange="handleChange(event)"
                     class="filter__select--offense-level form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                     aria-label="default select ">
                     <option type="option" value="" selected></option>
@@ -198,14 +206,14 @@
 
                   <div class="form-floating">
                     <select
+                      id="suspect__select__sex"
+                      onchange="handleChange(event)"
                       class="suspect__select--sex form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="suspectFloatingSexInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="suspect_male">Male</option>
-                      <option type="option" value="suspect_female">
-                        Female
-                      </option>
+                      <option type="option" value="M">Male</option>
+                      <option type="option" value="F">Female</option>
                     </select>
                     <label for="suspectFloatingSexInputGroup" class="fs-5"
                       >Sex</label
@@ -214,23 +222,17 @@
 
                   <div class="form-floating">
                     <select
+                      id="suspect__select__age"
+                      onchange="handleChange(event)"
                       class="suspect__select--age-group form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="suspectFloatingAgeGroupInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="suspect_lessThan18">
-                        &lt;18
-                      </option>
-                      <option type="option" value="suspect_18to24">
-                        18-24
-                      </option>
-                      <option type="option" value="suspect_25to44">
-                        25-44
-                      </option>
-                      <option type="option" value="suspect_45to64">
-                        45-64
-                      </option>
-                      <option type="option" value="suspect_65Plus">65+</option>
+                      <option type="option" value="&lt;18">&lt;18</option>
+                      <option type="option" value="18-24">18-24</option>
+                      <option type="option" value="25-44">25-44</option>
+                      <option type="option" value="45-64">45-64</option>
+                      <option type="option" value="65+">65+</option>
                       <option type="option" value="unknown">Unknown</option>
                     </select>
                     <label for="suspectFloatingAgeGroupInputGroup" class="fs-5"
@@ -240,29 +242,29 @@
 
                   <div class="form-floating">
                     <select
+                      id="suspect__select__race"
+                      onchange="handleChange(event)"
                       class="suspect__select--race form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="suspectFloatingRaceInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="suspect_white">White</option>
-                      <option type="option" value="suspect_whiteHispanic">
+                      <option type="option" value="WHITE">White</option>
+                      <option type="option" value="WHITE HISPANIC">
                         White Hispanic
                       </option>
-                      <option type="option" value="suspect_black">Black</option>
-                      <option type="option" value="suspect_blackHispanic">
+                      <option type="option" value="BLACK">Black</option>
+                      <option type="option" value="BLACK HISPANIC">
                         Black Hispanic
                       </option>
-                      <option
-                        type="option"
-                        value="suspect_asianPacificIslander">
+                      <option type="option" value="ASIAN / PACIFIC ISLANDER">
                         Asian / Pacific Islander
                       </option>
                       <option
                         type="option"
-                        value="suspect_americanIndianAlaskanNative">
+                        value="American Indian / Alaskan Native">
                         American Indian / Alaskan Native
                       </option>
-                      <option type="option" value="suspect_other">Other</option>
+                      <option type="option" value="other">Other</option>
                       <option type="option" value="unknown">Unknown</option>
                     </select>
                     <label for="suspectFloatingRaceInputGroup" class="fs-5"
@@ -279,14 +281,14 @@
 
                   <div class="form-floating">
                     <select
+                      id="victim__select__sex"
+                      onchange="handleChange(event)"
                       class="victim__select--sex form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="victimFloatingSexInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="victim_male">Male</option>
-                      <option type="option" value="victim_female">
-                        Female
-                      </option>
+                      <option type="option" value="M">Male</option>
+                      <option type="option" value="F">Female</option>
                     </select>
                     <label for="victimFloatingSexInputGroup" class="fs-5"
                       >Sex</label
@@ -295,17 +297,17 @@
 
                   <div class="form-floating">
                     <select
+                      id="victim__select__age"
+                      onchange="handleChange(event)"
                       class="victim__select--age-group form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="victimFloatingAgeGroupInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="victim_lessThan18">
-                        &lt;18
-                      </option>
-                      <option type="option" value="victim_18to24">18-24</option>
-                      <option type="option" value="victim_25to44">25-44</option>
-                      <option type="option" value="victim_45to64">45-64</option>
-                      <option type="option" value="victim_65Plus">65+</option>
+                      <option type="option" value="&lt;18">&lt;18</option>
+                      <option type="option" value="18-24">18-24</option>
+                      <option type="option" value="25-44">25-44</option>
+                      <option type="option" value="45-64">45-64</option>
+                      <option type="option" value="65+">65+</option>
                       <option type="option" value="unknown">Unknown</option>
                     </select>
                     <label for="victimFloatingAgeGroupInputGroup" class="fs-5"
@@ -315,28 +317,30 @@
 
                   <div class="form-floating">
                     <select
+                      id="victim__select__race"
+                      onchange="handleChange(event)"
                       class="victim__select--race form-select bg-transparent text-white pb-0 fs-5 fw-semibold"
                       aria-label="default select"
                       id="victimFloatingRaceInputGroup">
                       <option type="option" value="" selected></option>
-                      <option type="option" value="victim_white">White</option>
-                      <option type="option" value="victim_whiteHispanic">
+                      <option type="option" value="WHITE">White</option>
+                      <option type="option" value="WHITE HISPANIC">
                         White Hispanic
                       </option>
-                      <option type="option" value="victim_black">Black</option>
-                      <option type="option" value="victim_blackHispanic">
+                      <option type="option" value="BLACK">Black</option>
+                      <option type="option" value="BLACK HISPANIC">
                         Black Hispanic
                       </option>
-                      <option type="option" value="victim_asianPacificIslander">
+                      <option type="option" value="ASIAN / PACIFIC ISLANDER">
                         Asian / Pacific Islander
                       </option>
                       <option
                         type="option"
-                        value="victim_americanIndianAlaskanNative">
+                        value="AMERICAN INDIAN / ALASKAN NATIVE">
                         American Indian / Alaskan Native
                       </option>
-                      <option type="option" value="victim_other">Other</option>
-                      <option type="option" value="unknown">Unknown</option>
+                      <option type="option" value="OTHER">Other</option>
+                      <option type="option" value="UNKNOWN">Unknown</option>
                     </select>
                     <label for="victimFloatingRaceInputGroup" class="fs-5"
                       >Race</label
@@ -346,32 +350,37 @@
               </div>
             </div>
             <button
+              onclick="renderAPIData();scrollToSection('reported-complaints-data-table');"
               class="filter__btn filter__form--submit buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-4"
-              type="submit">
-              Submit
+              type="button"
+              name="submit_buttom"
+              id="table_filter_submit">
+              Generate Report
             </button>
-
-            <div
-              class="filter__form--last-row report-keyword-search-column d-flex flex-column align-items-center">
-              <div class="search_bar input-group justify-content-center mt-5">
-                <div class="filter__keywordSearch form-floating col-8">
-                  <input
-                    type="text"
-                    class="input__keywordSearch form-control fs-4 fw-semibold bg-transparent ps-4"
-                    id="floatingSearchBar"
-                    placeholder="Keyword Search" />
-                  <label
-                    for="floatingKeywordSearch"
-                    class="keyword__search--label fs-5 ps-4"
-                    >Search the whole table using Keywords</label
-                  >
-                </div>
-                <button class="input-group-text px-4 keyword-search__submit">
-                  <i class="fa-solid fa-arrow-right keyword__search--arrow"></i>
-                </button>
-              </div>
-            </div>
           </form>
+          <!-- the keyword-searchBar -->
+          <div
+            class="filter__form--last-row report-keyword-search-column d-flex flex-column align-items-center">
+            <div class="search_bar input-group justify-content-center mt-5">
+              <div class="filter__keywordSearch form-floating col-8">
+                <input
+                  type="text"
+                  class="input__keywordSearch form-control fs-4 fw-semibold bg-transparent ps-4"
+                  id="floatingSearchBar"
+                  onkeyup="filterTable()"
+                  placeholder="Keyword Search" />
+                <label
+                  for="floatingKeywordSearch"
+                  class="keyword__search--label fs-5 ps-4"
+                  >Search the whole table using Keywords</label
+                >
+              </div>
+              <button class="input-group-text px-4 keyword-search__submit">
+                <i class="fa-solid fa-arrow-right keyword__search--arrow"></i>
+              </button>
+            </div>
+          </div>
+          <!-- the keyword-searchBar -->
         </div>
       </div>
     </section>
@@ -427,7 +436,9 @@
             class="table table-dark table-striped table-hover text-nowrap text-center align-items-center data-filter-control-multiple-search-delimiter"
             id="reported-complaints-data-table">
             <thead class="reports__table--header text-center">
-              Latest Updates are from : 09/30/2022
+              <p class="latest__updated__date">
+                Latest Updates are from: 09/30/2022
+              </p>
               <tr class="table__header--row align-middle">
                 <th
                   onclick="sortColumns(event)"
@@ -507,7 +518,7 @@
                   data-sort-type="string"
                   scope="col"
                   class="table__column--header fw-light">
-                  Suspect's <br />Age Group/th>
+                  Suspect's <br />Age Group
                 </th>
                 <th
                   onclick="sortColumns(event)"

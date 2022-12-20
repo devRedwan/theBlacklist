@@ -106,6 +106,10 @@
 }
 
 /* --------------------- table --------------------- */
+.reports-table-container {
+  min-height: 50vh;
+}
+
 .alert {
   transition: all 500ms ease-in-out;
 }
