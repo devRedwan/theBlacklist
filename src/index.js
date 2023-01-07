@@ -48,13 +48,13 @@ observer.observe(filingReportRow);
 observer.observe(footer);
 
 // Pre-Loader
-// const preLoader = () => {
-//   document.body.classList += "loading";
-//   setTimeout(() => {
-//     return document.body.classList.remove("loading");
-//   }, 2000);
-// };
-// preLoader();
+const preLoader = () => {
+  document.body.classList += "loading";
+  setTimeout(() => {
+    return document.body.classList.remove("loading");
+  }, 2000);
+};
+preLoader();
 
 // Sticky NavBar
 const navBar = document.querySelector(".navbar");
