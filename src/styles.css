@@ -155,7 +155,7 @@ body {
   border-color: #d54857;
 }
 
-.sticky-lg-top {
+.sticky-top {
   background-color: #2e2e35;
   box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 25%);
   z-index: 999;
@@ -252,7 +252,7 @@ body {
 .filter__row {
   opacity: 0;
   transform: translateY(50%);
-  transition: all 500ms ease;
+  transition: all 1000ms ease;
 }
 
 .filter__row.active {
@@ -312,34 +312,29 @@ body {
   left: 50%;
 }
 
-/* --------------------- Payroll --------------------- */
+/* --------------------- filingReport --------------------- */
 
-#payroll_section {
+#filingReport_section {
   margin-bottom: 7rem;
 }
 
-.payroll__row {
+.filingReport__row {
   opacity: 0;
   transform: translateY(50%);
   transition: all 500ms ease;
 }
 
-.payroll__row.active {
+.filingReport__row.active {
   opacity: 1;
   transform: translateY(0%);
 }
 
-.payroll__img--wrapper::after {
+.filingReport__img--wrapper::after {
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
 }
 
-.payroll__img {
-  border-top-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-}
-
-/* --------------------- Payroll --------------------- */
+/* --------------------- filingReport --------------------- */
 footer {
   background-color: #2e2e35;
 
@@ -371,3 +366,22 @@ footer {
 }
 
 /* Mobile screen */
+@media (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
+  .landing__text--header .text__header--title {
+    font-size: 3.5em;
+    font-weight: 600;
+  }
+
+  .landing__img {
+    width: 80%;
+  }
+
+  .filingReport__img--wrapper::after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+}

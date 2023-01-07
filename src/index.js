@@ -8,7 +8,7 @@ For more filtering tutorial: https://dev.socrata.com/docs/endpoints.html
 sort by cmplnt_fr_dt
 */
 
-// async function cityPayrollapi() {
+// async function cityfilingReportapi() {
 //   const fetchAPI = await fetch(
 //     "https://data.cityofnewyork.us/resource/k397-673e.json?$limit=500000&agency_name=POLICE%20DEPARTMENT&$select=*"
 //   );
@@ -27,7 +27,7 @@ sort by cmplnt_fr_dt
 //------------------------------------------------------------------------------------------
 
 const filterRow = document.querySelector(".filter__row");
-const payrollRow = document.querySelector(".payroll__row");
+const filingReportRow = document.querySelector(".filingReport__row");
 const footer = document.querySelector("footer");
 
 //scrolling triggered animation
@@ -44,24 +44,24 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(filterRow);
-observer.observe(payrollRow);
+observer.observe(filingReportRow);
 observer.observe(footer);
 
 // Pre-Loader
-const preLoader = () => {
-  document.body.classList += "loading";
-  setTimeout(() => {
-    return document.body.classList.remove("loading");
-  }, 2000);
-};
-preLoader();
+// const preLoader = () => {
+//   document.body.classList += "loading";
+//   setTimeout(() => {
+//     return document.body.classList.remove("loading");
+//   }, 2000);
+// };
+// preLoader();
 
 // Sticky NavBar
 const navBar = document.querySelector(".navbar");
 window.addEventListener("scroll", function () {
   if (window.scrollY > 250) {
-    navBar.classList.add("sticky-lg-top");
+    navBar.classList.add("sticky-top");
   } else {
-    navBar.classList.remove("sticky-lg-top");
+    navBar.classList.remove("sticky-top");
   }
 });
