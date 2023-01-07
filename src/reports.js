@@ -42,7 +42,7 @@ const filterTable = () => {
 
 //sets the up the row inside the table
 const dataSetSkeleton = (reportData) => {
-  const skeleton = `<tr class="reports__table--row fs-5">
+  const skeleton = `<tr class="reports__table--row fs-md-5">
   <td data-sort-type="date" data-sort-key="date_of_incident" >${
     formattedDate(reportData.date_of_incident) || "UNKNOWN"
   }</td>

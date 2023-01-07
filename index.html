@@ -67,21 +67,24 @@
         alt="" />
     </section> -->
 
-    <section class="container d-flex justify-content-center" id="landing">
+    <section
+      class="container d-flex justify-content-center h-auto pb-md-4"
+      id="landing">
       <div
         class="row flex-nowrap flex-column-reverse flex-lg-row"
         id="landing__row">
         <div
-          class="landing__text-wrapper align-items-center align-items-lg-start justify-content-center vstack col-lg-6 col gap-5 p-xl-5 p-l-2">
-          <div class="landing__text--header text-center">
+          class="landing__text-wrapper align-items-center align-items-lg-start justify-content-center vstack col-lg-6 col gap-5 p-xl-5 p-lg-2">
+          <div class="landing__text--header text-center text-lg-start">
             <p class="landing__text text__header--subTitle mb-0">From the</p>
-            <h2 class="landing__text text__header--title">
+            <h2 class="landing__text text__header--title px-lg-0">
               Latest
               <span class="theme-color">Official </span>
               <span class="theme-color">NYPD </span>Data
             </h2>
           </div>
-          <h4 class="landing__text--description fw-bold fs-3 fs-sm-2">
+          <h4
+            class="landing__text--description text-center text-lg-start fw-bold fs-3 fs-sm-2">
             Lookup <span class="theme-color">Felonies</span> reported in your
             area
           </h4>
@@ -103,10 +106,10 @@
     </section>
 
     <section class="container py-5" id="filter_section">
-      <div class="card border-0 mb-3 bg-transparent mx-3 mx-sm-0">
-        <div class="row g-0 rounded-4 middle_row filter__row pb-5">
+      <div class="card border-0 mb-3 bg-transparent mx-lg-3 mx-sm-0">
+        <div class="row g-0 rounded-4 middle_row filter__row pb-5 pb-md-0">
           <div
-            class="card__img--wrapper filter__img--wrapper rounded-4 col-md-4 p-4">
+            class="card__img--wrapper filter__img--wrapper rounded-4 col-md-4 p-4 p-md-0">
             <img
               class="card__img img-fluid w-70"
               src="/assets/NYPD_Badge.png"
@@ -114,7 +117,7 @@
           </div>
 
           <div
-            class="filter__text--wrapper col-md-8 p-lg-5 vstack d-flex align-items-center justify-content-center my-5">
+            class="filter__text--wrapper col-md-8 p-lg-5 vstack d-flex align-items-center justify-content-center my-5 px-4">
             <div class="filter__text--header text-center mb-5">
               <p class="filter__header--subTitle fw-light mb-0">
                 Use the following
@@ -125,31 +128,31 @@
             </div>
 
             <div
-              class="filter__icon--list min d-flex justify-content-center hstack flex-wrap gap-sm-1 gap-4">
+              class="filter__icon--list min d-flex justify-content-center justify-content-sm-between hstack flex-wrap gap-sm-1 gap-5">
               <div
                 class="filter__icon--wrapper col-5 col-sm-2 filter__date text-center">
                 <span class="filter__icon--img text-center mx-4"></span>
-                <h4 class="filter__icon--title mt-5">Dates</h4>
+                <h4 class="filter__icon--title mt-md-5">Dates</h4>
               </div>
               <div
                 class="filter__icon--wrapper col-5 col-sm-2 filter__location text-center">
                 <span class="filter__icon--img text-center mx-4"></span>
-                <h4 class="filter__icon--title mt-5">Locations</h4>
+                <h4 class="filter__icon--title mt-md-5">Locations</h4>
               </div>
               <div
                 class="filter__icon--wrapper col-5 col-sm-2 filter__suspect text-center">
                 <span class="filter__icon--img text-center mx-4"></span>
-                <h4 class="filter__icon--title mt-5">Suspects</h4>
+                <h4 class="filter__icon--title mt-md-5">Suspects</h4>
               </div>
               <div
                 class="filter__icon--wrapper col-5 col-sm-2 filter__victim text-center">
                 <span class="filter__icon--img text-center mx-4"></span>
-                <h4 class="filter__icon--title mt-5">Victims</h4>
+                <h4 class="filter__icon--title mt-md-5">Victims</h4>
               </div>
             </div>
 
             <a
-              class="filter__btn buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-3"
+              class="filter__btn buttons btn btn-lg border-0 fs-sm-5 fw-semibold py-3 ps-3"
               href="/src/reports.html">
               NYPD Official Complaints Reports
             </a>
@@ -158,7 +161,9 @@
       </div>
     </section>
 
-    <section class="container py-5" id="filingReport_section">
+    <section
+      class="filingReport_section container py-5"
+      id="filingReport_section">
       <div class="card border-0 mb-3 bg-transparent mx-3 mx-sm-0">
         <div
           class="filingReport__row middle_row row g-0 rounded-4"
@@ -188,7 +193,7 @@
             </div>
             <a
               target="_blank"
-              class="filter__btn buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-3"
+              class="filter__btn buttons btn btn-lg border-0 fs-sm-5 fw-semibold py-3 ps-3"
               href="https://www.nyc.gov/site/nypd/services/victim-services/how-to-report-a-crime.page">
               File an online police report
             </a>
@@ -204,8 +209,8 @@
       </div>
     </section>
 
-    <footer class="container-fluid" id="footer">
-      <div class="row d-flex pt-2 flex-column text-center" id="footer_row">
+    <footer class="footer" id="footer">
+      <div class="d-flex pt-2 flex-column text-center" id="footer_row">
         <span class="footer__copyright">
           © 2022/2023 ALl rights reserved. The Blacklist,
         </span>

@@ -295,7 +295,7 @@ body {
   content: "\f714";
 }
 .filter__victim .filter__icon--img::before {
-  content: "\e547";
+  content: "\f5b4";
 }
 
 .filter__icon--img::after {
@@ -337,8 +337,7 @@ body {
 /* --------------------- filingReport --------------------- */
 footer {
   background-color: #2e2e35;
-
-  height: 50px;
+  height: auto;
 }
 
 /* --------------------- Responsive Design --------------------- */
@@ -359,17 +358,71 @@ footer {
 
 /* Tablet screen */
 
-@media (min-width: 768px) {
+@media (min-width: 760px) {
   html {
     font-size: 14px;
+  }
+  .landing__img {
+    width: 70%;
+  }
+  .landing__text--header .text__header--title {
+    padding: 0 2rem;
+  }
+  #filter_section {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .filter__icon--title {
+    font-size: 14px;
+  }
+  .filingReport_section .card__img {
+    object-fit: fill;
+  }
+}
+
+@media (max-width: 760px) {
+  .landing__text--header .text__header--title {
+    font-size: 3em;
+    font-weight: 700;
+    padding: 0 1rem;
+  }
+  .landing__img {
+    width: 70%;
+  }
+
+  .filter__btn {
+    font-size: 16px;
+  }
+
+  .filter__icon--title {
+    font-size: 14px;
+  }
+
+  .filter__icon--img::before {
+    top: -24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter__img--wrapper::after {
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: inherit;
+  }
+
+  .filingReport__img--wrapper::after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
   }
 }
 
 /* Mobile screen */
-@media (max-width: 576px) {
+@media (max-width: 476px) {
   html {
     font-size: 12px;
   }
+
   .landing__text--header .text__header--title {
     font-size: 3.5em;
     font-weight: 600;
@@ -379,9 +432,16 @@ footer {
     width: 80%;
   }
 
-  .filingReport__img--wrapper::after {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
+  .landing__btn {
+    padding-right: 56px;
+  }
+
+  .filter__btn {
+    font-size: 12px;
+    padding-right: 45px;
+  }
+
+  .filter__icon--img::before {
+    top: -18px;
   }
 }

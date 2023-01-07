@@ -90,7 +90,7 @@
         </div>
 
         <div class="reported__sub-header py-5">
-          <h4 class="reported__sub-header text-center">
+          <h4 class="reported__sub-header--text fs-5 text-center">
             This dataset includes all valid felony, misdemeanor, and violation
             crimes reported to the New York City Police Department (NYPD) from
             the beginning to the end of current year.
@@ -100,7 +100,7 @@
     </section>
 
     <section class="reports-filter-container container">
-      <div class="report-filter-row row my-5">
+      <div class="report-filter-row row my-5 mr-0">
         <div class="report-filter-col">
           <h1
             class="report-filter__title col-lg d-flex justify-content-center fw-bold theme-color mb-5 pb-2">
@@ -236,7 +236,7 @@
                       <option type="option" value="unknown">Unknown</option>
                     </select>
                     <label for="suspectFloatingAgeGroupInputGroup" class="fs-5"
-                      >Age Group</label
+                      >Age</label
                     >
                   </div>
 
@@ -311,7 +311,7 @@
                       <option type="option" value="unknown">Unknown</option>
                     </select>
                     <label for="victimFloatingAgeGroupInputGroup" class="fs-5"
-                      >Age Group</label
+                      >Age</label
                     >
                   </div>
 
@@ -351,7 +351,7 @@
             </div>
             <button
               onclick="renderAPIData();scrollToSection('reported-complaints-data-table');"
-              class="filter__btn filter__form--submit buttons btn btn-lg border-0 fs-5 fw-semibold py-3 ps-4"
+              class="filter__btn filter__form--submit buttons btn btn-lg border-0 fs-md-5 fw-semibold py-3 ps-4"
               type="button"
               name="submit_buttom"
               id="table_filter_submit">
@@ -391,7 +391,7 @@
           class="alert alert-danger alert-dismissible text-center fade show"
           role="alert">
           <h1 class="alert-title">ALERT</h1>
-          <h5>
+          <h5 class="alert-description">
             This table is only capable of showing the first 100 results from
             your search. <br />
             We are looking into getting all the information from NYPD at once.
@@ -406,7 +406,7 @@
         <div
           class="alert alert-success alert-dismissible text-center fade show"
           role="alert">
-          <h5>
+          <h5 class="alert-description">
             To retrieve ALL your desired data, try requesting more specific
             results using more filters.
           </h5>
@@ -418,7 +418,7 @@
         <div
           class="alert alert-primary alert-dismissible text-center fade show"
           role="alert">
-          <h5>
+          <h5 class="alert-description">
             <span class="theme-color fs-4 fw-semibold">
               Click on the column headers to sort in ascending or descending
               order.
@@ -518,7 +518,7 @@
                   data-sort-type="string"
                   scope="col"
                   class="table__column--header fw-light">
-                  Suspect's <br />Age Group
+                  Suspect's <br />Age
                 </th>
                 <th
                   onclick="sortColumns(event)"
@@ -542,7 +542,7 @@
                   data-sort-type="string"
                   scope="col"
                   class="table__column--header fw-light">
-                  Victim's <br />Age Group
+                  Victim's <br />Age
                 </th>
                 <th
                   onclick="sortColumns(event)"
