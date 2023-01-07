@@ -222,18 +222,7 @@ const scrollToSection = (sectionId) => {
 };
 
 //filtering Table ---------------
-//set the max date to today
-/* use this when the max date shoudl be dynamically set to today
-function updateMaxAttribute() {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-  const day = currentDate.getDate().toString().padStart(2, "0");
-  const formattedDate = `${year}-${month}-${day}`;
-  filterDateFrom.setAttribute("max", formattedDate);
-  filterDateTo.setAttribute("max", formattedDate);
-}
-*/
+
 //filter using dates
 const handleDateChange = (event) => {
   const fromDate = filterDateFrom.value;
