@@ -8,7 +8,7 @@ TheBlacklist is an application that allows users to lookup the latest available 
 https://the-blacklist-2-0.vercel.app/
 
 ## Features
-* Official city government crime reports lookup near your area
+* Official city government crime reports lookup in the greater New York City Area
 * Filter results by
   - Location
   - Dates
